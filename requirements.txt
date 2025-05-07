@@ -1,0 +1,6 @@
+numerapi
+pandas
+numpy
+scikit-learn
+lightgbm
+python-dotenv
