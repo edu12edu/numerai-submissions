@@ -1,0 +1,29 @@
+name: 🏃‍♂️ Run Numerai Predictions Daily
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # se ejecuta cada día a la 1:00 UTC
+  workflow_dispatch: # te permite ejecutarlo manualmente desde la pestaña “Actions”
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ secrets.PYTHON_VERSION }}
+
+      - name: 📦 Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 🚀 Run predictions + upload to Numerai
+        env:
+          NUMERAI_PUBLIC_ID: ${{ secrets.NUMERAI_PUBLIC_ID }}
+          NUMERAI_SECRET_KEY: ${{ secrets.NUMERAI_SECRET_KEY }}
+          NUMERAI_MODEL_ID: ${{ secrets.NUMERAI_MODEL_ID }}
+        run: python hello_numerai.py
