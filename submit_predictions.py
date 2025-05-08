@@ -1,6 +1,6 @@
 import os
 from numerapi import NumerAPI
-
+#verificando secrets
 public_id = os.getenv("NUMERAI_PUBLIC_ID")
 secret_key = os.getenv("NUMERAI_SECRET_KEY")
 model_id = os.getenv("NUMERAI_MODEL_ID")
