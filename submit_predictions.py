@@ -1,5 +1,7 @@
+
 import os
 from numerapi import NumerAPI
+# Ejecutando para comprobar secrets
 
 # Recuperar variables del entorno
 public_id = os.getenv("NUMERAI_PUBLIC_ID")
